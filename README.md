@@ -19,7 +19,7 @@
 <div align="center">
     <strong>The world's first "Double-Sided" AI Interviewer that Reads Your Face, Hears Your Voice, Reviews Your Code and Reacts in 3D.</strong>
 </div>
----
+
 ## Overview
 **PrepMaster** is a next-generation mock interview platform designed to simulate the pressure and fluidity of a real technical interview. It goes beyond simple text chat by integrating **3D Avatars**, **Real-Time Emotion Detection** and **Agentic Document Parsing**.
 
