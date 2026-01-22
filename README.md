@@ -65,7 +65,7 @@ Unlike standard chatbots, PrepMaster acts as a **"Double-Sided"** partner:
 
 1. **Clone the repository:**
     ```bash
-    git clone [https://github.com/VisionExpo/PrepMaster.git](https://github.com/VisionExpo/PrepMaster.git)
+    git clone https://github.com/VisionExpo/PrepMaster.git
     cd PrepMaster
 
 2. **Create and activate virtual environment:**
@@ -100,5 +100,5 @@ Unlike standard chatbots, PrepMaster acts as a **"Double-Sided"** partner:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE)
 
 <div align="center">
-Made with love by <strong>[Vishal]</strong>
+Made with love by <strong>Vishal</strong>
 </div>
