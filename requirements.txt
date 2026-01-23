@@ -24,3 +24,4 @@ edge-tts==6.1.10                     # TTS
 streamlit-code-editor==0.1.22        # Monaco Editor for Coding Round
 pypdf==5.1.0                         # PDF Reader
 numpy==1.26.4
+PyYAML
