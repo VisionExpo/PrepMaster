@@ -1,0 +1,26 @@
+# --- Core Framework ---
+streamlit==1.41.1
+python-dotenv==1.0.1
+watchdog==3.0.0     # for auto reloading during dev
+
+# --- AI & LLM
+google-generativeai==0.8.3
+groq==0.13.0  # Fast backup LLM
+
+# --- Computer Vision ---
+opencv-python-headless==4.10.0.84    # Best for Docker/Servers
+Pillow==11.0.0                       # Image Processing
+
+# --- Audio & Real-Time ---
+streamlit-webrtc==0.47.0             # Real-Time Video/Audio Bridge
+av==14.0.1                           # Audio/Video processing for WebRTC
+pydub==0.25.1                        # Audio manipulation
+
+# ---Speech Processing ---
+openai-whisper==20240930             # STT
+edge-tts==6.1.10                     # TTS
+
+# ---Tools & Utilities ---
+streamlit-code-editor==0.1.22        # Monaco Editor for Coding Round
+pypdf==5.1.0                         # PDF Reader
+numpy==1.26.4
