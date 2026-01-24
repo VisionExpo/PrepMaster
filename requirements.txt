@@ -1,5 +1,5 @@
 # --- Core Framework ---
-streamlit==1.29.0
+streamlit==1.52.0
 python-dotenv==1.0.1
 watchdog==3.0.0     # for auto reloading during dev
 
@@ -12,7 +12,6 @@ opencv-python-headless==4.10.0.84    # Best for Docker/Servers
 Pillow==11.0.0                       # Image Processing
 
 # --- Audio & Real-Time ---
-streamlit-webrtc==0.47.0             # Real-Time Video/Audio Bridge
 av==14.0.1                           # Audio/Video processing for WebRTC
 pydub==0.25.1                        # Audio manipulation
 
