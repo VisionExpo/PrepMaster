@@ -9,7 +9,7 @@ class InterviewerAI:
     def __init__(self):
         api_key = os.getenv("GOOGLE_API_KEY")
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.model = genai.GenerativeModel('gemini-1.5-flash-8b')
         self.chat_session = None
 
     def _load_prompts(self):
