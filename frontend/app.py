@@ -60,7 +60,7 @@ with col1:
 
 
 # === RIGHT COLUMN: Interaction ===
-  with col2:
+with col2:
     tab1, tab2, tab3 =st.tabs(["💬 Chat Transcript", "💻 Coding Sandbox", "📄 Resume"])
 
     # --- TAB 1: CHAT INTERFACE ---
