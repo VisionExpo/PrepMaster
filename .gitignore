@@ -67,3 +67,6 @@ htmlcov/
 # Database
 *.sqlite3
 *.db
+
+# API keys and secrets
+.env
