@@ -60,16 +60,13 @@ with col1:
 
 
 # === RIGHT COLUMN: Interaction ===
-    
-  
-# === RIGHT COLUMN: Interaction ===
-with col2:
-    tab1, tab2, tab3 = st.tabs(["💬 Chat Transcript", "💻 Coding Sandbox", "📄 Resume"])
+  with col2:
+    tab1, tab2, tab3 =st.tabs(["💬 Chat Transcript", "💻 Coding Sandbox", "📄 Resume"])
 
     # --- TAB 1: CHAT INTERFACE ---
     with tab1:
         st.markdown("### Conversation")
-        
+
         # Display Chat History
         chat_container = st.container()
         with chat_container:
@@ -88,21 +85,22 @@ with col2:
             if user_input:
                 # 1. Append User Message
                 st.session_state.chat_history.append({"role": "user", "content": user_input})
-                
+
                 # 2. Get AI Response
                 with st.spinner("Thinking..."):
                     ai_response = st.session_state.interviewer.get_response(user_input)
-                
+
                 # 3. Append AI Message
                 st.session_state.chat_history.append({"role": "assistant", "content": ai_response})
                 st.rerun()
         else:
             st.warning("⚠️ Please upload your resume in the 'Resume' tab to start.")
 
+    
     # --- TAB 2: CODING SANDBOX (Placeholder) ---
     with tab2:
-        st.markdown("### Technical Assessment")
-        st.info("Coding environment will be active during technical rounds.")
+        st.markdown("### Coding Sandbox")
+        st.info("This section will host the coding environment during technical rounds.")
         from streamlit_code_editor import code_editor
         code_editor("# Write your Python code here...", lang="python", height=200)
 
@@ -110,31 +108,31 @@ with col2:
     with tab3:
         st.markdown("### Upload Resume")
         uploaded_file = st.file_uploader("Upload PDF", type=["pdf"], key="resume_uploader")
-        
+
         if uploaded_file is not None and not st.session_state.interview_active:
             # Save temp file
             temp_path = f"temp_{uploaded_file.name}"
             with open(temp_path, "wb") as f:
                 f.write(uploaded_file.getbuffer())
-            
+
             with st.spinner("🔍 Agent OCR is analyzing your resume..."):
                 try:
                     # 1. Parse Resume
                     parser = ResumeParser()
                     data = parser.parse(temp_path)
                     st.session_state.resume_data = data
-                    
+
                     # 2. Start AI Session
                     first_question = st.session_state.interviewer.start_session(data)
                     st.session_state.chat_history.append({"role": "assistant", "content": first_question})
-                    
+
                     # 3. Activate State
                     st.session_state.interview_active = True
                     st.success("✅ Analysis Complete! Switching to Chat...")
-                    
+
                     # Cleanup
                     os.remove(temp_path)
                     st.rerun()
-                    
+
                 except Exception as e:
                     st.error(f"Error: {str(e)}")
