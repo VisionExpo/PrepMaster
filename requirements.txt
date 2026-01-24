@@ -20,7 +20,7 @@ pydub==0.25.1
 # --- Speech Processing ---
 openai-whisper==20231117
 torch>=2.0.0
-edge-tts==6.1.10
+edge-tts==7.2.7
 
 # --- Tools & Utilities ---
 streamlit-code-editor==0.1.22
