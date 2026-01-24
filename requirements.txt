@@ -1,27 +1,29 @@
 # --- Core Framework ---
-streamlit==1.52.0
+streamlit==1.24.0
+tornado==6.1
+protobuf>=4.25.0,<5.0.0
 python-dotenv==1.0.1
-watchdog==3.0.0     # for auto reloading during dev
+watchdog==3.0.0
 
-# --- AI & LLM
+# --- AI & LLM ---
 google-generativeai==0.8.3
-groq==0.13.0  # Fast backup LLM
+groq==0.13.0
 
 # --- Computer Vision ---
-opencv-python-headless==4.10.0.84    # Best for Docker/Servers
-Pillow==11.0.0                       # Image Processing
+opencv-python-headless==4.10.0.84
+Pillow==11.0.0
 
 # --- Audio & Real-Time ---
-av==14.0.1                           # Audio/Video processing for WebRTC
-pydub==0.25.1                        # Audio manipulation
+av==14.0.1
+pydub==0.25.1
 
-# ---Speech Processing ---
-openai-whisper==20240930             # STT
-torch==2.10.0                        # PyTorch for ML models
-edge-tts==6.1.10                     # TTS
+# --- Speech Processing ---
+openai-whisper==20231117
+torch>=2.0.0
+edge-tts==6.1.10
 
-# ---Tools & Utilities ---
-streamlit-code-editor==0.1.22        # Monaco Editor for Coding Round
-pypdf==5.1.0                         # PDF Reader
+# --- Tools & Utilities ---
+streamlit-code-editor==0.1.22
+pypdf==5.1.0
 numpy==1.26.4
-PyYAML==6.0                         # YAML Parsing
+PyYAML==6.0
