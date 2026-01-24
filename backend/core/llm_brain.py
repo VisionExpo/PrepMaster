@@ -11,6 +11,7 @@ class InterviewerAI:
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.chat_session = None
+        self.prompts = self._load_prompts()
 
     def _load_prompts(self):
         """Helper to load the YAML config"""
