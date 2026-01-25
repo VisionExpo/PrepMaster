@@ -15,6 +15,8 @@ from backend.core.audio_stack import AudioEngine
 from backend.core.agent_ocr import ResumeParser
 from backend.core.llm_brain import InterviewerAI
 from code_editor import code_editor
+from backend.core.code_engine import CodeExecutor
+
 
 
 
@@ -156,9 +158,39 @@ with col2:
     
     # --- TAB 2: CODING SANDBOX (Placeholder) ---
     with tab2:
-        st.markdown("### Coding Sandbox")
-        st.info("This section will host the coding environment during technical rounds.")
-        # code_editor("# Write your Python code here...", lang="python", height=200)
+        st.markdown("### Technical Assessment")
+
+        # 1. Editor Configuration
+        # Define a defualt starter code
+        default_code = "# Write a function to reverse a string\ndef solve():\n   print('Hello World')\n\nsolve()"
+
+        # 2. Render the Monaco Editor
+        # key= "code_editor" ensures the state is saved
+        response_dict = code_editor(default_code, lang="python", height=200, key="code_editor")
+
+        # 3. Execution Logic
+        # The editor returns a dict. We check if the code changed or button clicked.
+        if response_dict['type'] == 'submit' or st.button("🚀 Run Code"):
+            code_to_run = response_dict['text']
+
+            with st.spinner("Compiling..."):
+                output, error = CodeExecutor.run_code(code_to_run)
+                
+
+            # 4. Display Output / Errors
+            st.markdown("**Execution Result:**")
+
+            if error:
+                st.error("Compilation Failed!")
+                st.code(error, language='text')
+            else:
+                st.success("✅ Code Executed Successfully!")
+                st.markdown("**Output:**")
+                st.code(output, language='text')
+
+                if st.session_state.interview_active:
+                    grade = st.session_state.interviewer.grade_code(code_to_run, output)
+    
 
     # --- TAB 3: RESUME UPLOAD ---
     with tab3:
