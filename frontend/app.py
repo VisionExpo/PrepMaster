@@ -2,6 +2,9 @@ import streamlit as st
 import os
 import sys
 import asyncio
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- 1. SETUP PATHS ---
 # Add project root to path se we can import from backend
@@ -12,6 +15,8 @@ from backend.core.audio_stack import AudioEngine
 from backend.core.agent_ocr import ResumeParser
 from backend.core.llm_brain import InterviewerAI
 from code_editor import code_editor
+
+
 
 
 
@@ -144,7 +149,7 @@ with col2:
                 with col_text:
                     st.audio(audio_file, format="audio/mp3", autoplay=True)
                     
-                st.rerun()
+                st.experimental_rerun()
             else:
                 st.warning("⚠️ Please upload your resume in the 'Resume' tab to start.")
 
