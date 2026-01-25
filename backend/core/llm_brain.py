@@ -53,4 +53,22 @@ class InterviewerAI:
         if not self.chat_session:
             return "Error: Session not started."
         response = self.chat_session.send_message(user_answer)
-        return response.text    
+        return response.text   
+
+    def review_code(self, problem_desc, code_snippet, execution_output):
+        """
+        Analyzes code and returns feedback.
+        """
+        # 1. Get Template
+        raw_prompt = self.prompts["system_prompts"]["code_review"]
+        
+        # 2. Fill Template
+        formatted_prompt = raw_prompt.format(
+            problem_description=problem_desc,
+            code_snippet=code_snippet,
+            execution_output=execution_output
+        )
+
+        # 3. Send to Gemini
+        response = self.model.generate_content(formatted_prompt)
+        return response.text 
