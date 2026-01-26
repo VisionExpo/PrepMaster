@@ -66,3 +66,20 @@ system_prompts:
             }}
         ]
     }}
+
+   # 4. The Problem Generator (New!)
+  problem_generator: |
+    Create a unique Python coding interview problem for a candidate with these skills: {skills}.
+    
+    REQUIREMENTS:
+    - Topic: {topic} (e.g., Algorithms, Data Structures, or AI)
+    - Difficulty: {difficulty}
+    - Output Format: Strict Python code block with a function signature and a docstring describing the problem.
+    - DO NOT provide the solution implementation. Just `pass`.
+    - Example Output:
+      def optimize_route(distances):
+          """
+          Given a list of distances...
+          Return the shortest path...
+          """
+          pass

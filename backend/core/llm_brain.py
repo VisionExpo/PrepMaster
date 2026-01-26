@@ -72,3 +72,24 @@ class InterviewerAI:
         # 3. Send to Gemini
         response = self.model.generate_content(formatted_prompt)
         return response.text 
+    
+
+    def generate_problem(self, skills, difficulty="Medium"):
+        """
+        Creates a custom coding problem based on candidate skills.
+        """
+        raw_prompt = self.prompts["system_prompts"]["problem_generator"]
+        
+        # 1. Fill Template
+        formatted_prompt = raw_prompt.format(
+            skills=skills,
+            topic="Data Structures & Algorithms", # You can make this dynamic later
+            difficulty=difficulty
+        )
+
+        # 2. Generate
+        response = self.model.generate_content(formatted_prompt)
+        
+        # 3. Clean up formatting (Gemini sometimes adds ```python blocks)
+        clean_code = response.text.replace("```python", "").replace("```", "").strip()
+        return clean_code

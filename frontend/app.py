@@ -158,18 +158,35 @@ with col2:
     
     # --- TAB 2: CODING SANDBOX (Placeholder) ---
     # --- TAB 2: CODING SANDBOX ---
+    # --- TAB 2: CODING SANDBOX ---
     with tab2:
         st.markdown("### 💻 Technical Assessment")
         
-        # 1. Editor Configuration
-        default_code = """# Question: Write a Python function to reverse a string.
-def solve(text):
-    return text[::-1]
+        col_controls, col_status = st.columns([1, 2])
+        with col_controls:
+            if st.button("🎲 New Challenge"):
+                if st.session_state.resume_data:
+                    with st.spinner("Generating custom problem..."):
+                        # Get skills from resume
+                        skills_list = ", ".join(st.session_state.resume_data.get('skills', ['Python']))
+                        
+                        # Call Brain
+                        new_problem = st.session_state.interviewer.generate_problem(skills_list)
+                        
+                        # Update State (This forces the editor to reload)
+                        st.session_state['current_code'] = new_problem
+                        st.rerun()
+                else:
+                    st.warning("⚠️ Upload resume first!")
 
-print(solve("Hello World"))"""
+        # 1. Editor Configuration
+        # Use session state to persist the code across reruns
+        if 'current_code' not in st.session_state:
+            st.session_state['current_code'] = "# Click 'New Challenge' to get a problem based on your Resume."
 
         # 2. Render Editor
-        response_dict = code_editor(default_code, lang="python", height=300, key="code_editor")
+        # Note: We pass st.session_state['current_code'] as the default
+        response_dict = code_editor(st.session_state['current_code'], lang="python", height=300, key="code_editor")
         
         # 3. Execution & AI Review Logic
         if response_dict['type'] == "submit" or st.button("🚀 Run & Review"):
